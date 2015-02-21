@@ -1,0 +1,394 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>jsfRichFacesIceFacesPrimeFacesSpringHibernateMaven</groupId>
+	<artifactId>jsfRichFacesIceFacesPrimeFacesSpringHibernateMaven</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>jsfRichFacesIceFacesPrimeFacesSpringHibernateMaven</name>
+	<description>jsfRichFacesIceFacesPrimeFacesSpringHibernateMaven</description>
+	<packaging>war</packaging>
+
+	<properties>
+		<!-- Propiedad para encoding independiente de plataforma -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<!-- Versión de RichFaces -->
+		<richfaces.version>4.2.2.Final</richfaces.version>
+		
+		<!-- Versiónn de IceFaces -->
+		<ice.version>3.3.0</ice.version>
+		<!-- Versiónn de IceFaces Extensions -->
+		<iceextensions.version>1.8.2</iceextensions.version>
+		
+		<!-- Versión de Primefaces -->
+		<prime.version>4.0</prime.version>
+		<!-- Version de Primefaces extensions -->
+		<primeextensions.version>1.0.0</primeextensions.version>
+		
+		<!-- Versión de JSF (2.1.13)-->
+		<jsf.version>2.1.6</jsf.version>
+		<!-- Versión del Servlet -->
+		<servlet.version>2.5</servlet.version>
+		<!-- Versión de JSTL -->
+		<jstl.version>1.2</jstl.version>
+		<!-- Versión del codigo fuente Java -->
+		<source.version>1.6</source.version>
+		<!-- Versión para compilacion/ejecución Java -->
+		<target.version>1.6</target.version>
+		<!-- Version para maven-compiler-plugin -->
+		<compiler.version>3.1</compiler.version>
+		<!-- Version para el maven-war-plugin -->
+		<war.version>2.4</war.version>
+		<!-- Version para el maven-surefire-plugin -->
+		<surefire.version>2.12.2</surefire.version>
+
+		<!-- Version de LogBack -->
+		<logback.version>1.0.13</logback.version>
+		<!-- Version de Groovy -->
+		<groovy.version>2.1.9</groovy.version>
+		<!-- Version de SLF4J -->
+		<slf4j.version>1.7.5</slf4j.version>
+		<!-- Version de Spring -->
+		<spring.version>3.2.4.RELEASE</spring.version>
+		<!-- Version de HSQL -->
+		<hsql.version>2.3.1</hsql.version>
+		<!-- Version de HIBERNATE -->
+		<hibernate.version>4.2.6.Final</hibernate.version>
+		<!-- Version de JASSITS -->
+		<javassits.version>3.18.1-GA</javassits.version>
+		<!-- Version de COMMONS-DBCP -->
+		<com-dbcp.version>20030825.184428</com-dbcp.version>
+		<!-- Version de COMMONS-POOL -->
+		<com-pool.version>20030825.183949</com-pool.version>
+		<!-- Version de COMMONS-COLLECTION -->
+		<com-collection.version>20040616</com-collection.version>
+
+		<!-- Version de EHCACHE -->
+		<ehcache.version>2.7.4</ehcache.version>
+		
+		<!-- Version de javax.validations -->
+		<validations.version>1.1.0.Final</validations.version>
+	</properties>
+
+	<build>
+		<finalName>jsfRichFacesIceFacesPrimeFacesSpringHibernateMaven</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler.version}</version>
+				<configuration>
+					<source>${source.version}</source>
+					<target>${target.version}</target>
+					<!-- <executable>${env.JAVA7_HOME}</executable> -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<source>${source.version}</source>
+					<target>${target.version}</target>
+				</configuration>
+				<version>${war.version}</version>
+			</plugin>
+			<!-- Surefire plugin to skip JUnit tests -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<skipTests>true</skipTests>
+					<source>${source.version}</source>
+					<target>${target.version}</target>
+				</configuration>
+				<version>${surefire.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+
+		<!--
+		########## RICHFACES ##########
+		-->
+		<dependency>
+			<groupId>org.richfaces.ui</groupId>
+			<artifactId>richfaces-components-ui</artifactId>
+			<version>${richfaces.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.richfaces.core</groupId>
+			<artifactId>richfaces-core-impl</artifactId>
+			<version>${richfaces.version}</version>
+		</dependency>
+
+		<!--
+		########## INCEFACES ##########
+		-->
+		<!-- core -->
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces</artifactId>
+			<version>${ice.version}</version>
+		</dependency>
+		<!-- compact -->
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces-compat</artifactId>
+			<version>${ice.version}</version>
+		</dependency>
+		<!-- ACE components -->
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces-ace</artifactId>
+			<version>${ice.version}</version>
+		</dependency>
+		<!-- AJAX extension for JSF
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces-comps</artifactId>
+			<version>${iceextensions.version}</version>
+		</dependency>
+		AJAX extension for Facelets
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>icefaces-facelets</artifactId>
+			<version>${iceextensions.version}</version>
+		</dependency>
+		AJAX push components
+		<dependency>
+			<groupId>org.icefaces</groupId>
+			<artifactId>push-server</artifactId>
+			<version>${iceextensions.version}</version>
+			<type>war</type>
+		</dependency>
+		-->
+		
+		<!--
+		########## PRIMEFACES ##########
+		-->
+		<!-- core -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${prime.version}</version>
+		</dependency>
+		<!-- Extensions for Maven project -->
+		<dependency>
+			<groupId>org.primefaces.extensions</groupId>
+			<artifactId>primefaces-extensions</artifactId>
+			<version>${primeextensions.version}</version>
+		</dependency>
+
+
+		<!--
+		########## JSF ##########
+		-->
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>${jsf.version}</version>
+		</dependency>
+
+		<!--
+		########## SERVLET ##########
+		-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!--
+		########## LOGBACK ##########
+		-->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+
+		<!--
+		########## SLF4J para Logback ##########
+		-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<!--
+		########## Groovy ##########
+		-->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>${groovy.version}</version>
+		</dependency>
+
+		<!--
+		########## SPRING ##########
+		-->
+		<!-- Core utilities used by other modules. Define this if you use Spring 
+			Utility APIs (org.springframework.core.*/org.springframework.util.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Expression Language (depends on spring-core) Define this if you use 
+			Spring Expression APIs (org.springframework.expression.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Bean Factory and JavaBeans utilities (depends on spring-core) Define 
+			this if you use Spring Bean APIs (org.springframework.beans.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Application Context (depends on spring-core, spring-expression, spring-aop, 
+			spring-beans) This is the central artifact for Spring's Dependency Injection 
+			Container and is generally always defined -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Various Application Context utilities, including EhCache, JavaMail, 
+			Quartz, and Freemarker integration Define this if you need any of these integrations -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Transaction Management Abstraction (depends on spring-core, spring-beans, 
+			spring-aop, spring-context) Define this if you use Spring Transactions or 
+			DAO Exception Hierarchy (org.springframework.transaction.*/org.springframework.dao.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- JDBC Data Access Library (depends on spring-core, spring-beans, spring-context, 
+			spring-tx) Define this if you use Spring's JdbcTemplate API (org.springframework.jdbc.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Object-to-Relation-Mapping (ORM) integration with Hibernate, JPA, 
+			and iBatis. (depends on spring-core, spring-beans, spring-context, spring-tx) 
+			Define this if you need ORM (org.springframework.orm.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Object-to-XML Mapping (OXM) abstraction and integration with JAXB, 
+			JiBX, Castor, XStream, and XML Beans. (depends on spring-core, spring-beans, 
+			spring-context) Define this if you need OXM (org.springframework.oxm.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-oxm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Web application development utilities applicable to both Servlet and 
+			Portlet Environments (depends on spring-core, spring-beans, spring-context) 
+			Define this if you use Spring MVC, or wish to use Struts, JSF, or another 
+			web framework with Spring (org.springframework.web.*) -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!--
+		########## HSQL ##########
+		-->
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>${hsql.version}</version>
+		</dependency>
+
+		<!--
+		########## HIBERNATE ##########
+		-->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>${javassits.version}</version>
+		</dependency>
+
+		<!--
+		########## COMMONS ##########
+		-->
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>${com-dbcp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>${com-pool.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${com-collection.version}</version>
+		</dependency>
+
+		<!--
+		########## EHCACHE ##########
+		-->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+			<version>${ehcache.version}</version>
+		</dependency>
+		
+		<!--
+		########## VALIDATIONS ##########
+		-->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>${validations.version}</version>
+		</dependency>
+
+	</dependencies>
+
+
+
+
+</project>

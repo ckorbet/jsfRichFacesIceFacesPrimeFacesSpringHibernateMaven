@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+	<h:head>
+		<title>WELCOME</title>
+	</h:head> 
+	<h:body> 
+		<f:view>
+			<h1><h:outputLabel value="JSF + RichFaces + PrimeFaces + IceFaces" /></h1>
+			<hr/>
+			<h:form id="form" prependId="false">
+				<table align="left">
+					<tr>
+						<th><h:outputLabel value="RICHFACES" /></th>
+						<td>
+							<h:graphicImage value="#{welcomeBean.greenRightArrow}" style="width:20px; height:10px; border:0px"/>
+							&nbsp;
+							<h:commandLink action="#{welcomeBean.richfacesForward()}" value="RichFaces" />
+						</td>
+					</tr>
+					<tr>
+						<th><h:outputLabel value="PRIMEFACES" /></th>
+						<td>
+							<h:graphicImage value="#{welcomeBean.greenRightArrow}" style="width:20px; height:10px; border:0px"/>
+							&nbsp;
+							<h:commandLink action="#{welcomeBean.primefacesForward()}" value="PrimeFaces" />
+						</td>
+					</tr>
+					<tr>
+						<th><h:outputLabel value="ICEFACES" /></th>
+						<td>
+							<h:graphicImage value="#{welcomeBean.greenRightArrow}" style="width:20px; height:10px; border:0px"/>
+							&nbsp;
+							<h:commandLink action="#{welcomeBean.icefacesForward()}" value="IceFaces" />
+						</td>
+					</tr>
+					<tr>
+						<th><h:outputLabel value="TODOS" /></th>
+						<td>
+							<h:graphicImage value="#{welcomeBean.greenRightArrow}" style="width:20px; height:10px; border:0px"/>
+							&nbsp;
+							<h:commandLink action="#{welcomeBean.allForward()}" value="Todos" />
+						</td>
+					</tr>
+				</table>
+			</h:form>
+			
+		</f:view>
+	
+	</h:body> 
+</html>
